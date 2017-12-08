@@ -58,7 +58,6 @@
     </div>
 
 <script>
-
  
 function compare(){
     var test = document.getElementById('email').value;
