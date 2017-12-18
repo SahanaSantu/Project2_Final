@@ -25,7 +25,7 @@
     <li><a href="index.php?page=tasks&action=all" style="color: black;font-weight: bold">All Tasks </a></li>
     <li><a href="index.php?page=accounts&action=updateUser" style="color: black;font-weight: bold">Update Account </a></li>
       </ul>
-     
+      
     </div>
   </div>
 </nav>
@@ -38,15 +38,17 @@
                 </div>
                 <div class="panel-body">
 
-              <form  id="Update" action="index.php?page=accounts&action=save" method="POST" class="form-horizontal" role="form">
+              <form  id="Update" action="index.php?page=accounts&action=updateAccount" method="POST" class="form-horizontal" role="form">
 
         <div class="container" class="form-group">
         <label><b>Username</b></label>
-        <input type="email" placeholder="Enter Username/Email" name="uname" value="<?php echo $data['email']?>" readonly title="Cannot edit other users credentails"><br>
+        <input type="email" placeholder="Enter Username/Email" name="uname" value="<?php echo $data['email']?>" title="User Name is not editable" readonly><br>
 
+        <label><b>old Password</b></label>
+        <input type="password" placeholder="Old Password" name="currentpwd" required><br>
 
-        <label><b>Password</b></label>
-        <input type="password" placeholder="Password" name="pwd"  value="<?php echo $data['password']?>" title="Cannot edit other users credentails" readonly><br>
+        <label><b>New Password</b></label>
+        <input type="password" placeholder="New Password" name="pwd" minlength="6" required><br>
 
         <label><b>First Name</b></label>
         <input type="text" placeholder="Enter First Name" name="fname" value="<?php echo $data['fname']?>" pattern="[A-Za-z]*" title="Enter only characters" required><br>
@@ -54,29 +56,19 @@
         <label><b>Last Name</b></label>
         <input type="text" placeholder="Enter Last Name" name="lname" value="<?php echo $data['lname']?>" pattern="[A-Za-z]*" title="Enter only characters" required><br>
              
-        <label><b>Phone</b></label>
-        <input type="text" placeholder="Enter Phone Number" pattern="[0-9]*.{10,10}" maxlength="10" name="pnumber" value="<?php echo $data['phone']?>" title="Enter 10 digit phone number"  required><br>
-
-        <label><b>BirthDay</b></label>
-        <input type="date" placeholder="Enter Birth Day" name="Bday" value="<?php echo $data['birthday']?>"  required><br>
+       
+        <input type="hidden" name="pnumber"  value="<?php echo $data['phone']?>" ><br>
+        <input type="hidden" name="Bday" value="<?php echo $data['birthday']?>"><br>
         <input type="hidden" name="id" value="<?php echo $data['id']?>">
-        <label><b>Gender</b></label>
-       <select name="gender">
-         <option><?php echo $data['gender']?></option> 
-        <option ><?php if ($data['gender']=="male"){echo "female";}else{echo "male";}?></option>
-       </select>
+         <input type="hidden" name="gender" value="<?php echo $data['gender']?>">
+       
         <br>
         <input type="submit" value="Update" name="Update" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
 
 
       </form>
-      <form id="delete" action="index.php?page=accounts&action=delete" method="POST" class="form-horizontal" role="form">
-        <div class="container" class="form-group">
-            <input type="hidden" name="id" value="<?php echo $data['id']?>">
-         <input type="submit" value="Delete" name="Delete" />
-        </div> 
-      </form>   
+      
      </div>
     </div>
    </div>

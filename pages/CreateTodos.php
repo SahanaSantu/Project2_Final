@@ -12,9 +12,23 @@
     
 </head>
 
-<body style="background-image:url(https://www.taurho-transcribes.co.uk/wp-content/uploads/2017/02/Login-background-image-resized.png)">
+<body style="background-image:url(https://grantcardonetv.com/wp-content/uploads/todo_list.jpg)">
 
-
+<nav class="navbar ">
+  <div class="container-fluid">
+    
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active" >
+    <li class="active"><a href="index.php?page=tasks&action=getById" style="color: black;font-weight: bold" >My tasks </a></li>
+    <li ><a  href="index.php?page=accounts&action=all" style="color: black;font-weight: bold" >All Accounts </a></li>
+    <li><a href="index.php?page=tasks&action=all" style="color: black;font-weight: bold">All Tasks </a></li>
+    <li><a href="index.php?page=accounts&action=updateUser" style="color: black;font-weight: bold">Update Account </a></li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
 
 <div class="container">
     <div class="row">
@@ -24,17 +38,17 @@
                   <strong>Create Task</strong>
                 </div>
                 <div class="panel-body">
-              <form  id="Register" action="https://web.njit.edu/~su83/Project2_Final/Login.php" method="POST" class="form-horizontal" role="form">
+              <form  id="Register" action="index.php?page=tasks&action=store" method="POST" class="form-horizontal" role="form">
 
                 <div class="container" class="form-group">
         <label><b>Owner Email</b></label><br>
         <input type="email" placeholder="Enter Username" name="email" required><br>
 
         <label><b>Created Date</b></label><br>
-        <input type="date" placeholder="Enter Created Date" name="cdate" required><br>
+        <input type="date" placeholder="Enter Created Date" name="cdate" id="cdate" required><br>
 
         <label><b>Due Date</b></label><br>
-        <input type="Date" placeholder="Enter Due Date" name="ddate" min="new Date(document.getElementById('cdate').value).getTime()" required><br>
+        <input type="Date" placeholder="Enter Due Date" name="ddate" id="ddate" min="new Date(document.getElementById('cdate').value).getTime()" onblur="compare()" required><br>
              
         <label><b>Message</b></label><br>
         <input type="text" placeholder="Enter Message" name="message" required><br>
@@ -60,15 +74,12 @@
 <script>
  
 function compare(){
-    var test = document.getElementById('email').value;
-   alert(test);   
-   var startDt = document.getElementById("cdate").value;
-    var endDt = document.getElementById("ddate").value;
- 
-    if( (new Date(startDt).getTime() < new Date(endDt).getTime()))
+    var fromdate = document.getElementById('cdate').value;
+    var enddate = document.getElementById('ddate').value;
+    if( (new Date(enddate).getTime() < new Date(fromdate).getTime()))
     {
-		alert("test");
-        //document.getElementById("ddate").focus();
+		alert("Due Date should be greater than Created Date");
+        
     }
 	
 }
