@@ -1,8 +1,7 @@
 <?php
-Namespace DbConnection;
-use \PDO;
-
-//DB connection
+namespace database;
+use PDO;
+//singleton pattern
 class dbConn{
 
     //variable to hold connection object.
@@ -13,7 +12,7 @@ class dbConn{
             // assign PDO object to db variable
             self::$db = new PDO(HOST,USERNAME,PASSWORD);
             self::$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-            //echo "Connection success: ";
+            
             
         }
         catch (PDOException $e) {

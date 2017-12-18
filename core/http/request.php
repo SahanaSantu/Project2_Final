@@ -1,5 +1,7 @@
 <?php
 namespace http;
+
+
 class request
 {
 //this gets the request method to make it easier to use
